@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets.Scripts.Base.Build;
+
 public delegate void CallUIToolChange(ItemType cubetye,CubeType materialType);
 public class ToolBarUIScene : UIScene
 {

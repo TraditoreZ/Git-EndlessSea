@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.Base.Build;
 using Ceto;
 
 public class ObjBuoYancy : MonoBehaviour

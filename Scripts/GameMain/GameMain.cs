@@ -25,10 +25,10 @@ public class GameMain : MonoSingleton<GameMain>
     void Start()
     {
         gamequality = new GameQuality();
-        LoadConfig();
-        DontDestroyOnLoad(gameObject);
         fps = gameObject.AddComponent<FPSCalc>();
-        Application.targetFrameRate = 30;
+        LoadConfig();
+        DontDestroyOnLoad(gameObject);       
+        Application.targetFrameRate = 60;
 
         Screen.SetResolution(ScreenX, ScreenY, fullScreen);
 

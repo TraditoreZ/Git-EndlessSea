@@ -36,7 +36,7 @@ public class UnitArray : MonoBehaviour
         int z = Mathf.RoundToInt(CollectionHelper.Round(cubeinfo.transform.localPosition.z, 2) * 2);
 
         unitArray.Add(new UnitBuoInfo(BuoyanceType.cube, x, y, z));
-
+        
     }
 
     private IEnumerator UpdateUnitArray()

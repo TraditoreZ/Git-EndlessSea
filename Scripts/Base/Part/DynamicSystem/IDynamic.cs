@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public interface IDynamic
+namespace Assets.Scripts.Base.Part.DynamicSystem
 {
-    Vector3 GetDynamic();
-    Vector3 GetCenterMass();
-
-
+    public interface IDynamic
+    {
+        Vector3 Dynamic { get; set; }
+        Vector3 CenterMass { get; set; }
+    }
 }

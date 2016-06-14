@@ -16,7 +16,7 @@ public class WorldManager : MonoSingleton<WorldManager>
     private Transform sun;
     void Start()
     {
-        
+
         LoadTerrain();
 
         if (GameMain.online)
@@ -30,9 +30,9 @@ public class WorldManager : MonoSingleton<WorldManager>
         }
 
 
-      //  LoadSky();
+        LoadSky();
 
-       // LoadOcean();
+        // LoadOcean();
     }
 
     void LoadTerrain()
@@ -67,11 +67,25 @@ public class WorldManager : MonoSingleton<WorldManager>
 
     void LoadSky()
     {
-        var skyObj = Resources.Load("World/Sky");
-        var sky = Instantiate(skyObj) as GameObject;
-        sky.name = "Tenkoku DynamicSky";
-        sun = Global.FindChild(sky.transform, "LIGHT_World");
-
+        //var skyObj = Resources.Load("World/Sky");
+        //var sky = Instantiate(skyObj) as GameObject;
+        //sky.name = "Tenkoku DynamicSky";
+        //sun = Global.FindChild(sky.transform, "LIGHT_World");
+        var skyObj = GameObject.Find("Tenkoku DynamicSky");
+        if (skyObj)
+        {
+            var tenkoku = skyObj.GetComponent("Tenkoku Module") as TenkokuModule;
+            if (tenkoku)
+            {
+                tenkoku.setTimeM = 300;
+                tenkoku.autoTimeSync = true;
+                tenkoku.calcTimeM = 300f;
+                tenkoku.weather_cloudAltoStratusAmt = 0.144f;
+                tenkoku.weather_cloudCirrusAmt = 0.4f;
+                tenkoku.weather_cloudCumulusAmt = 0.100f;
+                Debugger.Log("Sky Weather Begin");
+            }
+        }
     }
 
     void LoadOcean()

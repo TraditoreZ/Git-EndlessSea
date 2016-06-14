@@ -1,33 +1,51 @@
-﻿using UnityEngine;
-using System.Collections;
-using System;
+﻿using System;
+using UnityEngine;
 
-public class FanSystem : MonoBehaviour, IDynamic
+namespace Assets.Scripts.Base.Part.DynamicSystem
 {
-    private float force = 2000;
-
-    private Transform centermass;
-    void Start()
+    public class FanSystem : MonoBehaviour, IDynamic
     {
-        centermass = Global.FindChild(transform, "Particle");
-    }
+        private float force = 2000;
 
-
-    public Vector3 GetCenterMass()
-    {
-        if (centermass != null)
+        private Transform centermass;
+        void Start()
         {
-            return centermass.position;
+            centermass = Global.FindChild(transform, "Particle");
         }
-        else
+
+
+        Vector3 IDynamic.Dynamic
         {
-            return Vector3.zero;
+            get
+            {
+                return transform.up * force;
+            }
+
+            set
+            {
+
+            }
+        }
+
+        Vector3 IDynamic.CenterMass
+        {
+            get
+            {
+                if (centermass != null)
+                {
+                    return centermass.position;
+                }
+                return Vector3.zero;
+            }
+
+            set
+            {
+
+            }
         }
     }
 
-    public Vector3 GetDynamic()
+    class FanSystemImpl : FanSystem
     {
-        return transform.up * force;
     }
-
 }

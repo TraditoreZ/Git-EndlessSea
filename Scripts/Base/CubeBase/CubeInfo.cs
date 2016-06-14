@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using Assets.Scripts.Base.Build;
 using Ceto;
 
 public class CubeInfo : MonoBehaviour, IMassParticle, ICubeMass
@@ -60,18 +61,13 @@ public class CubeInfo : MonoBehaviour, IMassParticle, ICubeMass
     /// <returns></returns>
     public virtual int GetMass()
     {
-        if (density != 0)
+        if (Math.Abs(density) > 0)
         {
-            float vol = (transform.localScale.x * transform.localScale.y * transform.localScale.z);
-            return Mathf.RoundToInt(density * 1000 * vol);
+            float f = (transform.localScale.x * transform.localScale.y * transform.localScale.z);
+            return Mathf.RoundToInt(density * 1000 * f);
         }
-        else
-        {
-            return 0;
-        }
-
+        return 0;
     }
-
 
 
     /// <summary>
@@ -84,30 +80,5 @@ public class CubeInfo : MonoBehaviour, IMassParticle, ICubeMass
         float levelHeigh = Ocean.Instance.QueryWaves(transform.position.x, transform.position.z);
         float cubeY = transform.position.y - halfSize;
         return Mathf.Lerp(0, maxBuo, Mathf.Abs((levelHeigh - cubeY)) / size);
-
-        //    if (cubeY > waveHeigh + size / 2)
-        //    {
-        //        return 0;
-        //    }
-        //    else if (cubeY < -(waveHeigh + size / 2))
-        //    {
-        //        return maxBuo;
-        //    }
-        //    else
-        //    {
-        //        // 0.25    0
-        //        //  max/2      max
-        //        if (cubeY >= waveHeigh)
-        //        {
-        //            return Mathf.RoundToInt(Mathf.Lerp(0, (maxBuo / 2), (cubeY - waveHeigh) * (1 / size)));
-        //        }
-        //        else
-        //        {
-        //            //  -0.25   0
-        //            //    max   max/2
-        //            return Mathf.RoundToInt(Mathf.Lerp((maxBuo / 2), maxBuo, (waveHeigh - cubeY) * (1 / size)));
-        //        }
-        //    }
-
     }
 }

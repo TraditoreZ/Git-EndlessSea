@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using Assets.Scripts.Base.Part.DynamicSystem;
 using ControlSystem;
 
 public class ObjManager : MonoBehaviour, IObjManager, IDynamicManager, IObjControllerManager, IDirectionManager
@@ -12,7 +13,6 @@ public class ObjManager : MonoBehaviour, IObjManager, IDynamicManager, IObjContr
 
     private Rigidbody body;
     public Transform m_centerOfMass;
-    private UnitArray unitArray;
     /// <summary>物体重力 （N）</summary>
     public float gravity { get { return _gravity; } }
     [SerializeField]
@@ -180,7 +180,7 @@ public class ObjManager : MonoBehaviour, IObjManager, IDynamicManager, IObjContr
         Vector3[] centers = new Vector3[dynamics.Count];
         for (int i = 0; i < dynamics.Count; i++)
         {
-            body.AddForceAtPosition(dynamics[i].GetDynamic() * Forward, dynamics[i].GetCenterMass(), ForceMode.Force);
+            body.AddForceAtPosition(dynamics[i].Dynamic* Forward, dynamics[i].CenterMass, ForceMode.Force);
         }
 
 

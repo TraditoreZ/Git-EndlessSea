@@ -2,6 +2,7 @@
 using System.Collections;
 using ControlSystem;
 using System;
+using Assets.Scripts.Base.Build;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class DuoOperation : MonoBehaviour, IControl

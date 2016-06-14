@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets.Scripts.Base.Part.DynamicSystem;
 
 public interface IDynamicManager:IObjManager
 {
